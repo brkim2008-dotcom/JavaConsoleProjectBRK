@@ -13,7 +13,7 @@ public interface ICustomDefine {
 	int MENU_EXIT = 5;
 	
 	double GRADE_A = 0.07;
-	double GRADE_B = 0.05;
+	double GRADE_B = 0.04;
 	double GRADE_C = 0.03;
 	
 }

@@ -1,6 +1,8 @@
 package banking;
+
 /* MenuSelectException.java 정의
 - 부모클래스 Exception 으로 부터 상속   */
+
 public class MenuSelectException extends Exception {
 
     public MenuSelectException(int menuNum) {
