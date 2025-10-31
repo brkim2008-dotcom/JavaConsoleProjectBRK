@@ -10,11 +10,9 @@ public class NormalAccount extends Account {                // 보통계좌의 �
  	    super(accountNumber, name, balance);
  	    this.interestRate = interestRate;
     }
- 
     public double getInterestRate() {
         return interestRate;
     }
- 
     @Override
     public void deposit(int amount) {                       // 입금 시 이자 계산 및 적용 (재정의)
     	
@@ -22,7 +20,6 @@ public class NormalAccount extends Account {                // 보통계좌의 �
  	    super.deposit(interest);
  	    super.deposit(amount);
     }
-   
     @Override                                               
     public void showAccountInfo() {                          // 계좌정보 출력 메서드 (재정의)
     	

@@ -50,7 +50,6 @@ public class AccountManager {
 			System.out.println("[오류] 잔고는 숫자로 입력해야 합니다. 다시 입력.");
 			scanner.nextLine(); 
 		}
-			
 		System.out.print("계좌번호: ");
 		accountNumber = scanner.nextLine();
 			
@@ -71,24 +70,19 @@ public class AccountManager {
 				scanner.nextLine(); 
 			}
 		}
-		
 		Account newAccount = new Account(accountNumber, name, balance);       // Account 객체 생성 및 배열에 저장
 		accountList[numOfAccount++] = newAccount;                             // 후위증가 연산자, 배열에 저장 후 계좌 수 증가
-			
 		System.out.println("계좌 개설이 완료되었습니다.");
 	}
-	
 	public void deposit() {                                                   // 4. 입금
 		System.out.println("\n***입 금***");
 		System.out.print("계좌번호: ");
 		String accountNumber = scanner.nextLine();
-			
 		Account account = findAccount(accountNumber);
 		if (account == null) {
 			System.out.println("[오류] 계좌번호를 찾을 수 없습니다.");
 			return;
 		}
-			
 		int amount = -1;
 		while (amount <= 0) {
 			try {
@@ -104,23 +98,19 @@ public class AccountManager {
 				scanner.nextLine(); 
 			}
 		}
-			
 		account.deposit(amount);                                               // Account 객체의 deposit 메서드 호출 , 입금액만큼 잔고 증가
 		System.out.println("입금이 완료되었습니다. "
 				+ "현재 잔액: "  + account.getBalance() + "원");
 	}
-		
 	public void withdraw() {                                                   // 5. 출금
 		System.out.println("\n***출 금***");
 		System.out.print("계좌번호: ");
 		String accountNumber = scanner.nextLine();
-			
 		Account account = findAccount(accountNumber);
 		if (account == null) {
 			System.out.println("[오류] 계좌번호를 찾을 수 없습니다.");
 			return;
 		}
-			
 		int amount = -1;
 		int currentBalance = account.getBalance();                            // 출금 전에 현재 잔고를 미리 가져와 저장
 			
@@ -142,7 +132,6 @@ public class AccountManager {
 				scanner.nextLine();
 			}
 		}
-			
 		if (account.withdraw(amount)) {                                        // 출금 성공
 			System.out.println("출금이 완료되었습니다. 현재 잔액: " 
 		            + account.getBalance() + "원");
@@ -150,7 +139,6 @@ public class AccountManager {
 			System.out.println("[오류] 잔액 부족으로 출금 실패.");                     
 		}
 	}
-		
 	public void inquire() {                                                    // 전체 계좌 정보 출력
 		System.out.println("\n***전체계좌정보 출력***");
 		if (numOfAccount == 0) {
@@ -165,7 +153,6 @@ public class AccountManager {
 		System.out.println("전체계좌 정보출력이 완료되었습니다. "
 				+ "(총 " + numOfAccount + "개)");
 	}
-		
 	public void closeScanner() {                                                // 프로그램 종료 시 Scanner 닫기 (메인에서 호출할 용도)
 		if (scanner != null) {
 			scanner.close();

@@ -28,17 +28,13 @@ public class BankingSystemMain {
 	    while(true) {
 	        try {
 	            showMenu();
-	                
 	            int choice = mainScanner.nextInt();                 // while 루프 밖에서 선언된 mainScanner를 사용합니다.
 	            mainScanner.nextLine(); 
-
 	            if (choice < ICustomDefine.MENU_MAKE || 
 	                choice > ICustomDefine.MENU_EXIT) {
 	                throw new MenuSelectException(choice);
 	            }
-	                
 	            switch(choice) {
-	                
 	                case ICustomDefine.MENU_MAKE : manager.makeAccount();
 	                    break;
 	                case ICustomDefine.MENU_DEPOSIT : manager.deposit();
