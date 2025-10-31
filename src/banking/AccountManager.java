@@ -7,36 +7,58 @@ public class AccountManager {
 		
 	private Account[] accountList;                                                         // 계좌 객체 배열
 	private int numOfAccount;                                                              // 현재 저장된 계좌 객체의 수
-	private Scanner scanner;                                                               // 사용자 입력용 Scanner
+	private Scanner scanner;       
+	
+	private static final double DEFAULT_NORMAL_RATE = 0.02;
 		
 	public AccountManager() {
 		this.accountList = new Account[50];                                                // 배열 크기 50으로 초기화
 		this.numOfAccount = 0;                                                             // 계좌 수 초기화
 		this.scanner = new Scanner(System.in);
 	}
-	private Account findAccount(String accNum) {                                           // 계좌 번호로 Account 객체를 찾아 반환하는 보조 메서드
+	private Account findAccount(String accountNumber) {                                           // 계좌 번호로 Account 객체를 찾아 반환하는 보조 메서드
 		for (int i = 0; i < numOfAccount; i++) {
-			if (accountList[i].getAccountNumber().equals(accNum)) {
+			if (accountList[i].getAccountNumber().equals(accountNumber)) {
 				return accountList[i];                                                     // 찾으면 해당 객체 반환
 			}
 		}
 		return null;                                                                        // 못 찾으면 null 반환
 	}
-		
 	public void makeAccount() {                                                            // 3. 계좌 개설
+		int select = -1; 
+		String accountNumber = null, name = null; 
+		int balance = -1;
 		
 		System.out.println("\n***신규계좌개설***");
+		
+		System.out.println("---계좌선택---");
+		System.out.println("1.보통계좌");
+		System.out.println("2.신용신뢰계좌");
+		System.out.println("선택: ");
+		
+		try {
+			select = scanner.nextInt();
+			scanner.nextLine();
+					
+			if (select != 1 && select !=2) {
+				System.out.println("잘못된 선택입니다. 계좌개설 취소");
+				return;
+			}
+		}	
+	    catch (InputMismatchException e) {
+			System.out.println("[오류] 잔고는 숫자로 입력해야 합니다. 다시 입력.");
+			scanner.nextLine(); 
+		}
 			
 		System.out.print("계좌번호: ");
-		String accountNumber = scanner.nextLine();
+		accountNumber = scanner.nextLine();
 			
 		System.out.print("고객이름: ");
-		String name = scanner.nextLine();
+		name = scanner.nextLine();
 			
-		int balance = -1;
 		while (balance < 0) {
 			try {
-				System.out.print("계좌잔고(0원 이상): ");
+				System.out.print("계좌잔고: ");
 				balance = scanner.nextInt();
 				scanner.nextLine(); 
 					

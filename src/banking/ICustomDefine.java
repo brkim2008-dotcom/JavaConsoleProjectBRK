@@ -14,6 +14,6 @@ public interface ICustomDefine {
 	
 	double GRADE_A = 0.07;
 	double GRADE_B = 0.04;
-	double GRADE_C = 0.03;
+	double GRADE_C = 0.02;
 	
 }
